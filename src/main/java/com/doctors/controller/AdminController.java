@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/admin")
+@RequestMapping("/api/Admin")
 @CrossOrigin(origins = "*")
 public class AdminController {
 

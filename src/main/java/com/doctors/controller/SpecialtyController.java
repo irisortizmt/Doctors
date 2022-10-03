@@ -1,6 +1,5 @@
 package com.doctors.controller;
 
-import com.doctors.modelo.DoctorModel;
 import com.doctors.modelo.SpecialtyModel;
 import com.doctors.service.SpecialtyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/specialty")
+@RequestMapping("/api/Specialty")
 @CrossOrigin(origins = "*")
 public class SpecialtyController {
 
