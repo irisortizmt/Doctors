@@ -18,8 +18,13 @@ public class SpecialtyController {
     private SpecialtyService specialtyService;
 
     @GetMapping("/all")
-    @PostMapping("/all")
     public List<SpecialtyModel> getAllSpecialties(){
+        return specialtyService.getAllSpecialties();
+    }
+
+    @PostMapping("/all")
+    @ResponseStatus(HttpStatus.CREATED)
+    public List<SpecialtyModel> getAllSpecialties2(){
         return specialtyService.getAllSpecialties();
     }
 

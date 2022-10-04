@@ -19,10 +19,16 @@ public class ScoreController {
     private ScoreService scoreService;
 
     @GetMapping("/all")
-    @PostMapping("/all")
     public List<ScoreModel> getAllScores(){
         return scoreService.getAllScores();
     }
+
+    @PostMapping("/all")
+    @ResponseStatus(HttpStatus.CREATED)
+    public List<ScoreModel> getAllScores2(){
+        return scoreService.getAllScores();
+    }
+
     @GetMapping("/{id}")
     public Optional<ScoreModel> getScore(@PathVariable Integer id){
         return scoreService.getScore(id);

@@ -17,10 +17,16 @@ public class DoctorController {
     private DoctorService doctorService;
 
     @GetMapping("/all")
-    @PostMapping("/all")
     public List<DoctorModel> getAllDoctors(){
         return doctorService.getAllDoctors();
     }
+    @PostMapping("/all")
+    @ResponseStatus(HttpStatus.CREATED)
+    public List<DoctorModel> getAllDoctors2(){
+        return doctorService.getAllDoctors();
+    }
+
+
     @GetMapping("/{id}")
     public Optional <DoctorModel> getDoctor(@PathVariable Integer id){
         return doctorService.getDoctor(id);

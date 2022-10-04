@@ -18,8 +18,12 @@ public class MessageController {
     private MessageService messageService;
 
     @GetMapping("/all")
+        public List<MessageModel> getAllMessages(){
+        return messageService.getAllMessages();
+    }
     @PostMapping("/all")
-    public List<MessageModel> getAllMessages(){
+    @ResponseStatus(HttpStatus.CREATED)
+    public List<MessageModel> getAllMessages2(){
         return messageService.getAllMessages();
     }
 

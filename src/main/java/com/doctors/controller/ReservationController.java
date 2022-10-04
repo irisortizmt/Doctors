@@ -19,8 +19,13 @@ public class ReservationController {
     private ReservationService reservationService;
 
     @GetMapping(("/all"))
-    @PostMapping("/all")
     public List<ReservationModel> getAllReservations(){
+        return reservationService.getAllReservations();
+    }
+
+    @PostMapping("/all")
+    @ResponseStatus(HttpStatus.CREATED)
+    public List<ReservationModel> getAllReservations2(){
         return reservationService.getAllReservations();
     }
 
