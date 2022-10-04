@@ -17,11 +17,14 @@ public class ClientController {
     private ClientService clientService;
 
     @GetMapping("/all")
-    @PostMapping("/all")
     public List<ClientModel> getAllClients(){
         return clientService.getAllClients();
     }
-
+    @PostMapping("/all")
+    @ResponseStatus(HttpStatus.CREATED)
+    public List<ClientModel> getAllClients2(){
+        return clientService.getAllClients();
+    }
     @GetMapping("/{idClient}")
     public Optional<ClientModel> getClient(@PathVariable Integer idClient){
         return clientService.getClient(idClient);

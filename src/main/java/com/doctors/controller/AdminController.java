@@ -18,8 +18,13 @@ public class AdminController {
     private AdminService adminService;
 
     @GetMapping("/all")
-    @PostMapping("/all")
     public List<AdminModel> getAllAdmins(){
+        return adminService.getAllAdmins();
+    }
+
+    @PostMapping("/all")
+    @ResponseStatus(HttpStatus.CREATED)
+    public List<AdminModel> getAllAdmins2() {
         return adminService.getAllAdmins();
     }
 
