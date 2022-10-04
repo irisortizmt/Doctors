@@ -3,6 +3,7 @@ package com.doctors.controller;
 import com.doctors.modelo.MessageModel;
 import com.doctors.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,6 +18,7 @@ public class MessageController {
     private MessageService messageService;
 
     @GetMapping("/all")
+    @PostMapping("/all")
     public List<MessageModel> getAllMessages(){
         return messageService.getAllMessages();
     }
@@ -27,6 +29,7 @@ public class MessageController {
     }
 
     @PostMapping("/save")
+    @ResponseStatus(HttpStatus.CREATED)
     public MessageModel saveMessage(@RequestBody MessageModel messageModel){
         return messageService.saveMessage(messageModel);
     }

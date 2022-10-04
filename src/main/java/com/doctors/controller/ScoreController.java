@@ -4,6 +4,7 @@ package com.doctors.controller;
 import com.doctors.modelo.ScoreModel;
 import com.doctors.service.ScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class ScoreController {
     private ScoreService scoreService;
 
     @GetMapping("/all")
+    @PostMapping("/all")
     public List<ScoreModel> getAllScores(){
         return scoreService.getAllScores();
     }
@@ -27,6 +29,7 @@ public class ScoreController {
     }
 
     @PostMapping("/save")
+    @ResponseStatus(HttpStatus.CREATED)
     public ScoreModel saveScore(@RequestBody ScoreModel scoreModel){
         return scoreService.saveScore(scoreModel);
     }

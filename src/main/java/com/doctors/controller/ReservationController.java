@@ -4,6 +4,7 @@ package com.doctors.controller;
 import com.doctors.modelo.ReservationModel;
 import com.doctors.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class ReservationController {
     private ReservationService reservationService;
 
     @GetMapping(("/all"))
+    @PostMapping("/all")
     public List<ReservationModel> getAllReservations(){
         return reservationService.getAllReservations();
     }
@@ -28,6 +30,7 @@ public class ReservationController {
     }
 
     @PostMapping("/save")
+    @ResponseStatus(HttpStatus.CREATED)
     public ReservationModel saveReservation(@RequestBody ReservationModel reservationModel){
         return reservationService.saveReservation(reservationModel);
     }

@@ -3,6 +3,7 @@ package com.doctors.controller;
 import com.doctors.modelo.ClientModel;
 import com.doctors.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public class ClientController {
     private ClientService clientService;
 
     @GetMapping("/all")
+    @PostMapping("/all")
     public List<ClientModel> getAllClients(){
         return clientService.getAllClients();
     }
@@ -26,6 +28,7 @@ public class ClientController {
     }
 
     @PostMapping("/save")
+    @ResponseStatus(HttpStatus.CREATED)
     public ClientModel saveClient(@RequestBody ClientModel clientModel){
         return clientService.saveClient(clientModel);
     }
