@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/client")
+@RequestMapping("/api/Client")
 @CrossOrigin(origins = "*")
 public class ClientController {
     @Autowired

@@ -9,13 +9,13 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/doctor")
+@RequestMapping("/api/Doctor")
 @CrossOrigin(origins = "*")
 public class DoctorController {
     @Autowired
     private DoctorService doctorService;
 
-    @GetMapping("/all")
+    @GetMapping("all")
     public List<DoctorModel> getAllDoctors(){
         return doctorService.getAllDoctors();
     }

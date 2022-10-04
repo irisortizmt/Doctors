@@ -10,14 +10,14 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/specialty")
+@RequestMapping("/api/Specialty")
 @CrossOrigin(origins = "*")
 public class SpecialtyController {
 
     @Autowired
     private SpecialtyService specialtyService;
 
-    @GetMapping("/all")
+    @GetMapping("all")
     public List<SpecialtyModel> getAllSpecialties(){
         return specialtyService.getAllSpecialties();
     }
@@ -34,7 +34,7 @@ public class SpecialtyController {
     public boolean deleteSpecialty(@PathVariable Integer id){
         return specialtyService.deleteSpecialty(id);
     }
-    @PutMapping("/update")
+    @PutMapping("update")
     public SpecialtyModel updateSpecialty(@RequestBody SpecialtyModel specialtyModel){
         return specialtyService.updateSpecialty(specialtyModel);
     }

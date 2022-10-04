@@ -9,14 +9,14 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/admin")
-@CrossOrigin(origins = "*")
+@RequestMapping("/api/Admin")
+@CrossOrigin(origins = "*",  methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class AdminController {
 
     @Autowired
     private AdminService adminService;
 
-    @GetMapping("/all")
+    @GetMapping("all")
     public List<AdminModel> getAllAdmins(){
         return adminService.getAllAdmins();
     }

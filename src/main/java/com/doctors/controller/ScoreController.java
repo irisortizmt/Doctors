@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/score")
+@RequestMapping("/api/Score")
 @CrossOrigin(origins="*")
 public class ScoreController {
 

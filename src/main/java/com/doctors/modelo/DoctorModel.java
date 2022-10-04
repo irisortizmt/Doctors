@@ -24,7 +24,7 @@ public class DoctorModel implements Serializable {
     @JsonIgnoreProperties("doctors")
     private SpecialtyModel specialty;
 
-    @OneToMany(cascade = {CascadeType.PERSIST})
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy="doctor")
     @JsonIgnoreProperties({"doctor", "client"})
     private List<MessageModel> messages;
 
