@@ -24,16 +24,49 @@ public class DoctorService {
     public DoctorModel saveDoctor(DoctorModel doctorModel){
         return doctorRepository.saveDoctor(doctorModel);
     }
-
     public boolean deleteDoctor (Integer id){
-        return doctorRepository.deleteDoctor(id);
+        try {
+            doctorRepository.deleteDoctor(id);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
     }
 
     public DoctorModel updateDoctor(DoctorModel doctorModel){
-        return doctorRepository.updateDoctor(doctorModel);
+        if (doctorModel.getId() != null) {
+            Optional<DoctorModel> d = doctorRepository.getDoctor(doctorModel.getId());
+            if (!d.isEmpty()) {
+                if (doctorModel.getName() != null) {
+                    d.get().setName(doctorModel.getName());
+                }
+                if (doctorModel.getDepartment() != null) {
+                    d.get().setDepartment(doctorModel.getDepartment());
+                }
+                if (doctorModel.getYear() != null) {
+                    d.get().setYear(doctorModel.getYear());
+                }
+                if (doctorModel.getDescription() != null) {
+                    d.get().setDescription(doctorModel.getDescription());
+                }
+                if (doctorModel.getMessages() != null) {
+                    d.get().setMessages(doctorModel.getMessages());
+                }
+                if (doctorModel.getSpecialty() != null) {
+                    d.get().setSpecialty(doctorModel.getSpecialty());
+                }
+                if (doctorModel.getReservations() != null) {
+                    d.get().setReservations(doctorModel.getReservations());
+                }
+                doctorRepository.saveDoctor(d.get());
+                return d.get();
+            } else {
+                return doctorModel;
+            }
+        } else {
+            return doctorModel;
+        }
     }
-
-
-}
+ }
 
 

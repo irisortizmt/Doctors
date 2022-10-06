@@ -14,23 +14,51 @@ public class SpecialtyService {
     @Autowired
     private SpecialtyRepository specialtyRepository;
 
-    public List<SpecialtyModel> getAllSpecialties(){
+    public List<SpecialtyModel> getAllSpecialties() {
         return specialtyRepository.getAllSpecialties();
     }
 
-    public Optional<SpecialtyModel> getSpecialty(Integer id){
+    public Optional<SpecialtyModel> getSpecialty(Integer id) {
         return specialtyRepository.getSpecialty(id);
     }
 
-    public SpecialtyModel saveSpecialty(SpecialtyModel specialtyModel){
+    public SpecialtyModel saveSpecialty(SpecialtyModel specialtyModel) {
         return specialtyRepository.saveSpecialty(specialtyModel);
     }
 
-    public boolean deleteSpecialty (Integer id){
-        return specialtyRepository.deleteSpecialty(id);
+    public boolean deleteSpecialty(Integer id) {
+        try{
+            specialtyRepository.deleteSpecialty(id);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
     }
 
-    public SpecialtyModel updateSpecialty(SpecialtyModel specialtyModel){
-        return specialtyRepository.updateSpecialty(specialtyModel);
+    public SpecialtyModel updateSpecialty(SpecialtyModel specialtyModel) {
+        if (specialtyModel.getId() != null) {
+            Optional<SpecialtyModel> s = specialtyRepository.getSpecialty(specialtyModel.getId());
+            if (!s.isEmpty()) {
+                if (specialtyModel.getName() != null) {
+                    s.get().setName(specialtyModel.getName());
+                }
+                if (specialtyModel.getDescription() != null) {
+                    s.get().setDescription(specialtyModel.getDescription());
+                }
+                if (specialtyModel.getDoctors() != null) {
+                    s.get().setDoctors(specialtyModel.getDoctors());
+                }
+                specialtyRepository.saveSpecialty(s.get());
+                return s.get();
+            } else {
+                return specialtyModel;
+            }
+        } else {
+                return specialtyModel;
+            }
     }
 }
+
+
+
+

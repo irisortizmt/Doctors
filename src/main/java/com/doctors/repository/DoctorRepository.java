@@ -34,4 +34,5 @@ public class DoctorRepository {
     public DoctorModel updateDoctor (DoctorModel doctorModel ){
         return doctorCrudRepository.save(doctorModel);
     }
+
 }

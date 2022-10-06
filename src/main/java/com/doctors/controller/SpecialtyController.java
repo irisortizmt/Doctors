@@ -43,6 +43,7 @@ public class SpecialtyController {
         return specialtyService.deleteSpecialty(id);
     }
     @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
     public SpecialtyModel updateSpecialty(@RequestBody SpecialtyModel specialtyModel){
         return specialtyService.updateSpecialty(specialtyModel);
     }

@@ -73,6 +73,7 @@ public class SpecialtyModel implements Serializable {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
+                ", doctors=" + doctors +
                 '}';
     }
 }

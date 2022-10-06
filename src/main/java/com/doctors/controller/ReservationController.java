@@ -44,6 +44,7 @@ public class ReservationController {
         return reservationService.deleteReservation(idReservation);
     }
     @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
     public ReservationModel updateReservation(@RequestBody ReservationModel reservationModel){
         return reservationService.updateReservation(reservationModel);
     }

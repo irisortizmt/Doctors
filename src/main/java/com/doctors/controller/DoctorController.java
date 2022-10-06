@@ -42,6 +42,7 @@ public class DoctorController {
         return doctorService.deleteDoctor(id);
     }
     @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
     public DoctorModel updateDoctor(@RequestBody DoctorModel doctorModel){
         return doctorService.updateDoctor(doctorModel);
     }

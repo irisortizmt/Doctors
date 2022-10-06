@@ -44,6 +44,7 @@ public class ScoreController {
         return scoreService.deleteScore(id);
     }
     @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
     public ScoreModel updateScore(@RequestBody ScoreModel scoreModel){
         return scoreService.updateScore(scoreModel);
     }

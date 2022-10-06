@@ -28,11 +28,29 @@ public class ScoreService {
     }
 
     public boolean deleteScore(Integer id){
-        return scoreRepository.deleteScore(id);
+        try{
+            scoreRepository.deleteScore(id);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
     }
 
     public ScoreModel updateScore(ScoreModel scoreModel){
-        return scoreRepository.updateScore(scoreModel);
+        if(scoreModel.getId()!=null){
+            Optional<ScoreModel> s = scoreRepository.getScore(scoreModel.getId());
+            if(!s.isEmpty()){
+                if(scoreModel.getScore()!=null){
+                    s.get().setScore(scoreModel.getScore());
+                }
+                scoreRepository.saveScore(s.get());
+                return s.get();
+            }else{
+                return scoreModel;
+            }
+        }else{
+            return scoreModel;
+        }
     }
 
 }
