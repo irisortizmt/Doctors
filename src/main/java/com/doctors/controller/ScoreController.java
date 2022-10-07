@@ -11,31 +11,34 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/Score")
-@CrossOrigin(origins="*")
+@CrossOrigin(origins = "*")
 public class ScoreController {
 
     @Autowired
     private ScoreService scoreService;
 
     @GetMapping("/all")
-    public List<ScoreModel> getAllScores(){
+    public List<ScoreModel> getAllScores() {
         return scoreService.getAllScores();
     }
+
     @GetMapping("/{id}")
-    public Optional<ScoreModel> getScore(@PathVariable Integer id){
+    public Optional<ScoreModel> getScore(@PathVariable Integer id) {
         return scoreService.getScore(id);
     }
 
     @PostMapping("/save")
-    public ScoreModel saveScore(@RequestBody ScoreModel scoreModel){
+    public ScoreModel saveScore(@RequestBody ScoreModel scoreModel) {
         return scoreService.saveScore(scoreModel);
     }
+
     @DeleteMapping("/delete/{id}")
-    public boolean deleteScore(@PathVariable Integer id){
+    public boolean deleteScore(@PathVariable Integer id) {
         return scoreService.deleteScore(id);
     }
+
     @PutMapping("/update")
-    public ScoreModel updateScore(@RequestBody ScoreModel scoreModel){
+    public ScoreModel updateScore(@RequestBody ScoreModel scoreModel) {
         return scoreService.updateScore(scoreModel);
     }
 }

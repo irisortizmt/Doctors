@@ -12,7 +12,7 @@ import java.util.List;
 public class SpecialtyModel implements Serializable {
 
     @Id
-    @GeneratedValue (strategy =GenerationType.IDENTITY)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String description;
@@ -20,20 +20,6 @@ public class SpecialtyModel implements Serializable {
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "specialty")
     @JsonIgnoreProperties("specialty")
     private List<DoctorModel> doctors;
-
-    public SpecialtyModel() {
-    }
-
-    public SpecialtyModel(String name, String description) {
-        this.name = name;
-        this.description = description;
-    }
-
-    public SpecialtyModel(Integer id, String name, String description) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-    }
 
     public Integer getId() {
         return id;

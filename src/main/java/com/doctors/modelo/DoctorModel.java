@@ -11,13 +11,17 @@ import java.util.List;
 @Table(name="doctor")
 public class DoctorModel implements Serializable {
     @Id
-    @GeneratedValue (strategy =GenerationType.IDENTITY)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String name;
 
     private String department;
+
     private Integer year;
     private String description;
+
+    //@OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
 
     @ManyToOne
     @JoinColumn(name="specialtyId")
@@ -29,27 +33,10 @@ public class DoctorModel implements Serializable {
     private List<MessageModel> messages;
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "doctor")
-    @JsonIgnoreProperties({"doctor","client"})
+    @JsonIgnoreProperties({"doctor","messages"})
     private List<ReservationModel> reservations;
 
 
-    public DoctorModel(){
-    }
-
-    public DoctorModel(String name, String department, Integer year, String description) {
-        this.name = name;
-        this.department = department;
-        this.year = year;
-        this.description = description;
-    }
-
-    public DoctorModel(Integer id, String name, String department, Integer year, String description) {
-        this.id = id;
-        this.name = name;
-        this.department = department;
-        this.year = year;
-        this.description = description;
-    }
 
     public Integer getId() {
         return id;

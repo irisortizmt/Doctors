@@ -12,8 +12,12 @@ public class AdminModel implements Serializable {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(name="name",length=250)
     private String name;
+
+    @Column(name="email",length=45)
     private String email;
+    @Column(name="password",length=45)
     private String password;
 
     public AdminModel() {

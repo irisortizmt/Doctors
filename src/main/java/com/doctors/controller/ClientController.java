@@ -40,6 +40,4 @@ public class ClientController {
         return clientService.updateClient(clientModel);
     }
 
-
-
 }

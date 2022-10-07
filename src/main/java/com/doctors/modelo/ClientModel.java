@@ -16,6 +16,7 @@ public class ClientModel implements Serializable {
     private String email;
     private String password;
     private String name;
+    //@Column(name="name",length = 255)
     private Integer age;
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
