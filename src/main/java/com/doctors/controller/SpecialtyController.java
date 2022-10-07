@@ -38,8 +38,8 @@ public class SpecialtyController {
     public SpecialtyModel saveSpecialty(@RequestBody SpecialtyModel specialtyModel){
         return specialtyService.saveSpecialty(specialtyModel);
     }
-    @DeleteMapping("/delete/{id}")
-    @ResponseStatus(HttpStatus.CREATED)
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean deleteSpecialty(@PathVariable Integer id){
         return specialtyService.deleteSpecialty(id);
     }

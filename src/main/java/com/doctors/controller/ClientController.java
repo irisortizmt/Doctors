@@ -36,8 +36,8 @@ public class ClientController {
         return clientService.saveClient(clientModel);
     }
 
-    @DeleteMapping("/delete/{idClient}")
-    @ResponseStatus(HttpStatus.CREATED)
+    @DeleteMapping("/{idClient}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean deleteClient(@PathVariable Integer idClient){
         return clientService.deleteClient(idClient);
     }

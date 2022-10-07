@@ -39,8 +39,8 @@ public class AdminController {
         return adminService.saveAdmin(adminModel);
     }
 
-    @DeleteMapping("/delete/{id}")
-    @ResponseStatus(HttpStatus.CREATED)
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean deleteAdmin(@PathVariable Integer id){
         return adminService.deleteAdmin(id);
     }
