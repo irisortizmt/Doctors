@@ -38,6 +38,7 @@ public class DoctorController {
         return doctorService.saveDoctor(doctorModel);
     }
     @DeleteMapping("/delete/{id}")
+    @ResponseStatus(HttpStatus.CREATED)
     public boolean deleteDoctor(@PathVariable Integer id){
         return doctorService.deleteDoctor(id);
     }
