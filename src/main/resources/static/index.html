@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+    <style>
+        table, th, td{
+            border:1px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+    </style>
+<head>
+    <meta charset="UTF-8">
+    <title>RETO 4</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script type="text/javascript" src= "Doctor\Doctor.js"> </script>
+ <body>
+  <h3>SPECIALTY</h3>
+  <div>
+      ID:<input type="number" id="idSpecialty">
+      NAME:<input type="text" id="nameSp">
+      DESCRIPTION:<input type="text" id="descriptionSp">
+      DOCTORS:<input type="number" id="doctors">
+   </div>
+  <button onclick="leerSpecialties()">CONSULTAR</button>
+  <button onclick="guardarSpecialty()">GUARDAR</button>
+  <button onclick="editarSpecialty()">ACTUALIZAR</button>
+<p> </p>
+  <div id="resultadoSpecialty"> </div>
+
+ <h3>DOCTOR</h3>
+ <div>
+     ID:<input type="number" id="id">
+     NAME: <input type="text" id="name">
+     DEPARTMENT: <input type="text" id="department">
+     GRADUATE_YEAR: <input type="number" id="graduate_year">
+     DESCRIPTION: <input type="text" id="description">
+     SPECIALTY:<input type="text" id="specialty">
+ </div>
+  <button onclick="leerDoctores()">CONSULTAR</button>
+  <button onclick="guardarDoctor()">GUARDAR</button>
+  <button onclick="editarDoctor()">ACTUALIZAR</button>
+<p> </p>
+    <div id="resultadoDoctor"> </div>
+</body>
+</html>
