@@ -21,15 +21,24 @@ public class ClientService {
         return clientRepository.getClient(idClient);
     }
     public ClientModel saveClient(ClientModel clientModel){
-        return clientRepository.saveClient(clientModel);
-    }
-    public boolean deleteClient(Integer idClient){
-        try{
-            clientRepository.deleteClient(idClient);
-            return true;
-        }catch (Exception e){
-            return false;
+        if(clientModel.getIdClient()==null){
+            return clientRepository.saveClient(clientModel);
+        }else{
+            Optional<ClientModel> optionalClientModel=clientRepository.getClient(clientModel.getIdClient());
+            if(optionalClientModel.isEmpty()){
+                return clientRepository.saveClient(clientModel);
+            }else{
+                return clientModel;
+            }
         }
+}
+    public boolean deleteClient(Integer idClient){
+        Boolean aBolean = getClient(idClient).map (clientModel -> {
+            clientRepository.deleteClient(clientModel);
+            return true;
+        }).orElse(false);
+        return aBolean;
+
    }
     public ClientModel updateClient(ClientModel clientModel){
         if(clientModel.getIdClient()!=null){

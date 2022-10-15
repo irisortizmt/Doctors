@@ -23,16 +23,23 @@ public class MessageService {
     }
 
     public MessageModel saveMessage(MessageModel messageModel){
-
-        return messageRepository.saveMessage(messageModel);
+        if(messageModel.getIdMessage()==null){
+            return messageRepository.saveMessage(messageModel);
+        }else{
+            Optional<MessageModel> optionalMessageModel=messageRepository.getMessage(messageModel.getIdMessage());
+            if(optionalMessageModel.isEmpty()){
+                return messageRepository.saveMessage(messageModel);
+            }else{
+                return messageModel;
+            }
+        }
     }
     public boolean deleteMessage(Integer idMessage){
-        try {
-            messageRepository.deleteMessage(idMessage);
+        Boolean aBolean = getMessage(idMessage).map (messageModel ->  {
+           messageRepository.deleteMessage(messageModel);
             return true;
-        }catch (Exception e){
-            return false;
-        }
+        }).orElse(false);
+        return aBolean;
     }
 
     public MessageModel updateMessage (MessageModel messageModel ){

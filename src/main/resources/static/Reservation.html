@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<style>
+    table, th, td{
+        border:1px solid black;
+        border-collapse: collapse;
+        padding: 5px;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>RETO 5</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script type="text/javascript" src= "Reservation/Reservation.js"> </script>
+<body onload="leerDoctores(),leerClient()">
+<h1 style= "text-align:center;"> APLICACION DOCTORS</h1>
+<h2>RESERVATION</h2>
+<div>
+    START-DATE: <input type="date" id="startDate">
+    DEVOLUTION DATE: <input type="date" id="devDate">
+    STATUS: <input type="text" id="status" placeholder="Completed / Cancelled">
+    DOCTOR<select id="Doctor"></select>
+    CLIENT<select id="Client"></select>
+</div>
+<p></p>
+<button onclick="leerReser()">CONSULTAR</button>
+<button onclick="guardarReser()">GUARDAR</button>
+</p>
+<p> </p>
+<p>
+    <input type="button" onclick="history.back()" name="VOLVER ATRAS" value="VOLVER  ATRAS">
+</p>
+<p> </p>
+<div id="resultadoReser"> </div>
+</body>
+</html>

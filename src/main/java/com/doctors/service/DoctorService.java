@@ -22,15 +22,23 @@ public class DoctorService {
     }
 
     public DoctorModel saveDoctor(DoctorModel doctorModel){
-        return doctorRepository.saveDoctor(doctorModel);
+        if(doctorModel.getId()==null){
+            return doctorRepository.saveDoctor(doctorModel);
+        }else{
+            Optional<DoctorModel> optionalDoctorModel=doctorRepository.getDoctor(doctorModel.getId());
+            if(optionalDoctorModel.isEmpty()){
+                return doctorRepository.saveDoctor(doctorModel);
+            }else{
+                return doctorModel;
+            }
+        }
     }
     public boolean deleteDoctor (Integer id){
-        try {
-            doctorRepository.deleteDoctor(id);
+        Boolean aBolean = getDoctor(id).map (doctorModel -> {
+            doctorRepository.deleteDoctor(doctorModel);
             return true;
-        }catch (Exception e){
-            return false;
-        }
+        }).orElse(false);
+        return aBolean;
     }
 
     public DoctorModel updateDoctor(DoctorModel doctorModel){

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<style>
+    table, th, td{
+        border:1px solid black;
+        border-collapse: collapse;
+        padding: 5px;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>RETO 5</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script type="text/javascript" src= "Doctor\Doctor.js"> </script>
+<body onload="leerSpecialty()">
+<h1 style= "text-align:center;"> APLICACION DOCTORS</h1>
+<h2>DOCTOR</h2>
+<div>
+    NAME: <input type="text" id="name">
+    DEPARTMENT: <input type="text" id="department">
+    GRADUATE_YEAR: <input type="number" id="graduate_year">
+    DESCRIPTION: <input type="text" id="description">
+    SPECIALTY<select id="Specialty"></select>
+</div>
+<p>
+<button onclick="leerDoctores()">CONSULTAR</button>
+<button onclick="guardarDoctor()">GUARDAR</button>
+</p>
+<p>
+    <input type="button" onclick="history.back()" name="VOLVER ATRAS" value="VOLVER  ATRAS">
+</p>
+<p></p>
+<div id="resultadoDoctor"> </div>
+</body>
+</html>

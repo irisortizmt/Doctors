@@ -23,16 +23,24 @@ public class SpecialtyService {
     }
 
     public SpecialtyModel saveSpecialty(SpecialtyModel specialtyModel) {
-        return specialtyRepository.saveSpecialty(specialtyModel);
+        if(specialtyModel.getId()==null){
+            return specialtyRepository.saveSpecialty(specialtyModel);
+        }else{
+            Optional<SpecialtyModel> optionalSpecialtyModel=specialtyRepository.getSpecialty(specialtyModel.getId());
+            if(optionalSpecialtyModel.isEmpty()){
+                return specialtyRepository.saveSpecialty(specialtyModel);
+            }else{
+                return specialtyModel;
+            }
+        }
     }
 
     public boolean deleteSpecialty(Integer id) {
-        try{
-            specialtyRepository.deleteSpecialty(id);
+        Boolean aBolean = getSpecialty(id).map (specialtyModel -> {
+            specialtyRepository.deleteSpecialty(specialtyModel);
             return true;
-        }catch (Exception e){
-            return false;
-        }
+        }).orElse(false);
+        return aBolean;
     }
 
     public SpecialtyModel updateSpecialty(SpecialtyModel specialtyModel) {

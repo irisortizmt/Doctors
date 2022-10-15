@@ -30,8 +30,8 @@ public class ReservationRepository {
         return reservationCrudRepository.save(reservationModel);
     }
 
-    public boolean deleteReservation(Integer idReservation) {
-        reservationCrudRepository.deleteById(idReservation);
+    public boolean deleteReservation(ReservationModel reservationModel) {
+        reservationCrudRepository.delete(reservationModel);
         return true;
     }
 

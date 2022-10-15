@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<style>
+    table, th, td{
+        border:1px solid black;
+        border-collapse: collapse;
+        padding: 5px;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>RETO 5 </title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script type="text/javascript" src= "Client/Client.js"> </script>
+<body>
+<h1 style= "text-align:center;"> APLICACION DOCTORS</h1>
+<h2>CLIENT</h2>
+<div>
+    NAME:<input type="text" id="nameC">
+    EMAIL:<input type="text" id="email">
+    AGE:<input type="number" id="age">
+    PASSWORD:<input type="password" id="password">
+</div>
+<p>
+<button onclick="leerClient()">CONSULTAR</button>
+<button onclick="guardarClient()">GUARDAR</button>
+</p>
+<p>
+    <input type="button" onclick="history.back()" name="VOLVER ATRAS" value="VOLVER  ATRAS">
+</p>
+<p> </p>
+<div id="resultadoClient"> </div>

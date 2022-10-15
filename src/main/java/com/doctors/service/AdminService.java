@@ -23,16 +23,24 @@ public class AdminService {
     }
 
     public AdminModel saveAdmin(AdminModel adminModel){
-        return adminRepository.saveAdmin(adminModel);
+        if(adminModel.getId() ==null){
+            return adminRepository.saveAdmin(adminModel);
+        }else{
+            Optional<AdminModel> optionalAdminModel=adminRepository.getAdmin(adminModel.getId());
+            if(optionalAdminModel.isEmpty()){
+                return adminRepository.saveAdmin(adminModel);
+            }else{
+                return adminModel;
+            }
+        }
     }
 
     public boolean deleteAdmin (Integer id){
-        try{
-            adminRepository.deleteAdmin(id);
+        Boolean aBolean = getAdmin(id).map (adminModel -> {
+            adminRepository.deleteAdmin(adminModel);
             return true;
-        }catch (Exception e){
-            return false;
-        }
+        }).orElse(false);
+        return aBolean;
      }
 
     public AdminModel updateAdmin (AdminModel adminModel){

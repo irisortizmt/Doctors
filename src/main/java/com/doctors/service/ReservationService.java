@@ -43,12 +43,11 @@ public class ReservationService {
     }
 
     public boolean deleteReservation (Integer idReservation){
-        try{
-            reservationRepository.deleteReservation(idReservation);
+        Boolean aBolean = getReservation(idReservation).map (reservationModel -> {
+            reservationRepository.deleteReservation(reservationModel);
             return true;
-        }catch (Exception e){
-            return false;
-        }
+        }).orElse(false);
+        return aBolean;
     }
 
     public ReservationModel updateReservation(ReservationModel reservationModel){

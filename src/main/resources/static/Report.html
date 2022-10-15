@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<style>
+    table, th, td{
+        border:1px solid black;
+        border-collapse: collapse;
+        padding: 5px;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>RETO 5</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script type="text/javascript" src= "Report/Report.js"> </script>
+<h1 style= "text-align:center;"> APLICACION DOCTORS</h1>
+<h2>REPORT</h2>
+<div>
+    START-DATE: <input type="date" id="startDate">
+    DEVOLUTION-DATE: <input type="date" id="devDate">
+</div>
+<p>
+    <button onclick="reportDate()">REPORT-DATE</button>
+    <button onclick="reportStatus()">REPORT-STATUS</button>
+    <button onclick="topClients()">CONSULTAR-CLIENT</button>
+</p>
+<p> </p>
+<p>
+    <input type="button" onclick="history.back()" name="VOLVER ATRAS" value="VOLVER  ATRAS">
+</p>
+<p> </p>
+<div id="resultadoRep">
+
+</div>
+
+<div id="resultadoTop">
+
+</div>
+
+</body>
+</html>
